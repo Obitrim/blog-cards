@@ -24,13 +24,19 @@ body {
 .container {
   max-width: 1024px;
   margin: 0 auto;
+  padding: 1rem;
 
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 1.5rem;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 2rem;
 }
 
 .card {
+  display: flex;
+  flex-direction: column;
+  width: 320px;
+
   opacity: 0;
   overflow: hidden;
   background-color: var(--card-bg);
@@ -38,6 +44,30 @@ body {
   border-radius: 9px;
   background: #ffffff;
   box-shadow: 21px 21px 42px #d9d9d9, -21px -21px 42px #ffffff;
+
+  transform: translateY(4rem);
+  transition: all 0.25s ease-in-out;
+}
+
+.card:hover {
+  box-shadow: 21px 21px 42px #b4b4b4, -21px -21px 42px #ffffff;
+}
+
+.card.animate-delay:nth-child(1) {
+  transition-delay: 0.2s;
+}
+
+.card.animate-delay:nth-child(2) {
+  transition-delay: 0.4s;
+}
+
+.card.animate-delay:nth-child(3) {
+  transition-delay: 0.6s;
+}
+
+.card.animate-delay.animate {
+  transform: translateY(0);
+  opacity: 1;
 }
 
 .card__img {
@@ -48,10 +78,6 @@ body {
   height: 100%;
   width: 100%;
   object-fit: cover;
-}
-
-.card__content {
-  padding: 1.5rem;
 }
 
 .card__tag {
@@ -72,7 +98,17 @@ body {
   background-color: var(--pink);
 }
 
-.card__content div:nth-child(1) {
+.card__content {
+  padding: 1.5rem 1rem;
+
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.card__content > div:nth-child(1) {
+  flex: 1;
 }
 
 .card__title {
